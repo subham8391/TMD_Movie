@@ -28,6 +28,7 @@
   background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
   padding: 10px 20px;
   position: fixed;
+  z-index: 7;
 }
 .navbar{
   width: 100%;
@@ -110,7 +111,7 @@ input[type='search']{
 .home-section{
   width: 100%;
   height: 100vh;
-  background-color: rgb(255, 255, 255);
+  background-color: #12100e;
   display: flex;
 }
 .genres{
@@ -124,10 +125,11 @@ input[type='search']{
 }
 .content{
   width: 80%;
-  height: 100%;
+  height: auto;
   background-color: #c2b6b6;
   background-image: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);
-
+  border-radius: 20px 0 0 0;
+  overflow-y: scroll;
 }
 .genres-section{
   display: flex;
@@ -159,31 +161,42 @@ input[type='search']{
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  overflow-y: scroll;
+}
+.movie-content-head{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  padding: 20px 0;
 }
 .movies-section {
-  height: 90%;
+  height: auto;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
   gap: 20px; 
-  overflow-y: scroll;
-  padding: 10px;
+ 
+  padding: 15px;
 }
 
 .movie-container {
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .movie-card {
   display: flex;
   flex-direction: column;
   height: 100%; 
+  border-radius: 20px;
 }
 
 .movie-img {
   flex: 1;
+  border-radius: 20px 20px 0 0;
 }
 
 .movie-img img {
@@ -196,6 +209,7 @@ input[type='search']{
    padding: 10px;
    display: flex;
    flex-direction: column;
+   gap: 10px;
 }
 .m-detail{
   display: flex;
@@ -209,7 +223,7 @@ input[type='search']{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .pagination button {
@@ -232,4 +246,133 @@ input[type='search']{
 
 .pagination span {
   margin: 0 10px;
+}
+
+.containt-details-container{
+  width: 100%;
+  height: 100vh;
+  padding-top: 4.2rem;
+}
+
+.nowplay-slider{
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 20px;
+}
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  
+}
+.carousel-item {
+  width: 100%;
+  height: 80vh; 
+  background: #0f0024;
+  border-radius: 20px;
+  position: relative;
+  
+}
+.carousel-item img{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  image-rendering: -webkit-optimize-contrast; /* Safari */
+  image-rendering: pixelated; /* Modern browsers */
+  background-size: contain;
+}
+.overlay-text {
+  position: absolute;
+  top: 0px;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: linear-gradient(to right, rgb(10, 0, 0) 0%, rgba(10, 0, 0, 0.452) 50%, rgba(10, 0, 0, 0) 100%); /* Gradient background */
+  padding-left: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.np-detail{
+  width: 50%;
+  height: 80%;
+  /* background-color: #dbe7fc; */
+  text-wrap: wrap;
+  overflow: hidden;
+}
+.overlay-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.overlay-text p {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.overlay-text h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+}
+.overlay-text p span{
+  background-color: rgb(50, 50, 50);
+  margin-left: 10px;
+}
+
+.top-rated{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;  */
+  /* align-items: center; */
+  padding: 20px;
+  gap: 10px;
+}
+.top-rated h1{
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.card-carousel-item {
+  width: 100%;
+  height: 70vh; 
+  background-color: #000000;
+  border-radius: 20px;
+  position: relative;
+  color: white;
+  
+}
+.card-carousel-item img{
+  width: 100%;
+  height: 85%;
+  border-radius: 20px 20px 0 0;
+  image-rendering: -webkit-optimize-contrast; /* Safari */
+  image-rendering: pixelated; /* Modern browsers */
+  background-size: contain;
+}
+.card-carousel-details{
+  padding:5px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card-carousel-details h3{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.card-carousel-details p{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.ret-year{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

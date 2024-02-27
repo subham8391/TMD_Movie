@@ -1,15 +1,16 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function Genres({onGenreSelect}) {
-    const[genres,setGenres]=useState([]);
+function Genres() {
+    const [genres, setGenres] = useState([]);
+
     useEffect(() => {
         const fetchGenres = async () => {
             try {
-                const apiKey = '6f6546c488597640b6c611e630aca586';
+                const apiKey = '40b317677e1de615188d40b08ccd4460';
                 const genreListURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
                 const response = await fetch(genreListURL);
                 const data = await response.json();
-                //console.log(data)
                 setGenres(data.genres);
             } catch (error) {
                 console.error('Error fetching genres:', error);
@@ -19,19 +20,20 @@ function Genres({onGenreSelect}) {
         fetchGenres();
     }, []);
 
-    const handleGenreSelect=(genreId)=>{
-        onGenreSelect(genreId);
-    }
-  return (
-    <>
+    return (
         <div className="genres-section">
             <h2>Genres</h2>
-        {genres.map(genre => (
-                    <div className='g-names' key={genre.id} onClick={()=>handleGenreSelect(genre.id)}>{genre.name}</div>
-                ))}
+            {genres.map((genre) => (
+                <Link
+                    key={genre.id}
+                    to={`/movies/${genre.id}/${genre.name}`} // Passing genre ID and name as parameters
+                    className="g-names"
+                >
+                    {genre.name}
+                </Link>
+            ))}
         </div>
-    </>
-  )
+    );
 }
 
-export default Genres
+export default Genres;

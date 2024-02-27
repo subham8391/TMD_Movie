@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation} from 'react-router-dom';
-
+import { FaStar } from "react-icons/fa6";
 function SearchResults() {
     const location = useLocation();
     const query = new URLSearchParams(location.search).get('q');
@@ -13,7 +13,7 @@ function SearchResults() {
         const fetchSearchResults = async () => {
             try {
                 setLoading(true);
-                const apiKey = '6f6546c488597640b6c611e630aca586';
+                const apiKey = '40b317677e1de615188d40b08ccd4460';
                 const url = `https://api.themoviedb.org/3/search/movie?page=${page}&api_key=${apiKey}&query=${query}`;
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -51,12 +51,12 @@ function SearchResults() {
                                 </div>
                                 <div className="movie-details">
                                     <div className="m-detail">
-                                        <p>{item.title}</p>
-                                        <p>{item.vote_average.toFixed(1)}</p>
+                                        <p style={{width:'80%',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{item.title}</p>
+                                        <p style={{display:'flex'}}><FaStar style={{color:'yellow'}}/> {item.vote_average.toFixed(1)}</p>
                                     </div>
                                     <div className="m-detail">
                                         <p>Language: {item.original_language}</p>
-                                        <p>{item.release_date}</p>
+                                        <p style={{backgroundColor:'rgb(50, 50, 50)'}}>{item.release_date.split('-')[0]}</p>
                                     </div>
                                 </div>
                             </div>
