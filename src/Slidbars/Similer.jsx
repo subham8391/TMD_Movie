@@ -3,16 +3,18 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { FaStar } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-function CardCarousel({movies_type}) {
+
+function Similer({mid}) {
     const [images, setImages] = useState([]);
    
     useEffect(() => {
         const fetchPosterPaths = async () => {
             try {
                 const apiKey = '40b317677e1de615188d40b08ccd4460';
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${movies_type}?api_key=${apiKey}&page=5`);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${mid}/similar?api_key=${apiKey}&page=5`);
                 const data = await response.json();
                 const paths = data.results;
+                console.log(paths);
                 setImages(paths);
             } catch (error) {
                 console.error('Error fetching poster paths:', error);
@@ -69,7 +71,6 @@ function CardCarousel({movies_type}) {
             </Splide>
         </div>
     );
-
 }
 
-export default CardCarousel;
+export default Similer

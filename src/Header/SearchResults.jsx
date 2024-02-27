@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation} from 'react-router-dom';
 import { FaStar } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+
 function SearchResults() {
     const location = useLocation();
     const query = new URLSearchParams(location.search).get('q');
@@ -46,9 +48,11 @@ function SearchResults() {
                     {searchResults.map((item) => (
                         <div className="movie-container" key={item.id}>
                             <div className="movie-card">
+                            <Link to={`/details/${item.title}/${item.id}`}>
                                 <div className="movie-img">
                                     <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
                                 </div>
+                                </Link>
                                 <div className="movie-details">
                                     <div className="m-detail">
                                         <p style={{width:'80%',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{item.title}</p>

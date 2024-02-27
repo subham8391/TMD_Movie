@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Genres from '../Genres/Genres'
-import ContentFetcher from './ContentFetcher'
 import NowPlaying from '../Slidbars/NowPlaying'
 import CardCrousal from '../Slidbars/CardCrousal';
 function Home() {
